@@ -1,0 +1,15 @@
+main .Deck{
+    background-color: green;
+}
+.draw-btn {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.draw-btn:hover {
+    color: black;
+    background-color: white;
+}
