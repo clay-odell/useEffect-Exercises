@@ -13,3 +13,15 @@ main .Deck{
     color: black;
     background-color: white;
 }
+
+.shuffle-btn {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: teal;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.shuffle-btn:hover {
+    color: teal;
+    background-color: white;
+}
