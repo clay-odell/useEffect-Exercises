@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Card from "./Card";
 import axios from "axios";
-import './Deck.css';
+import "./Deck.css";
 
 const API_BASE_URL = "https://deckofcardsapi.com/api/deck";
 
@@ -22,7 +23,7 @@ function Deck() {
         `${API_BASE_URL}/${deck.deck_id}/draw`
       );
 
-      if (drawResult === 0) throw new Error("Deck is empty!");
+      if (drawResult.data.remaining === 0) throw new Error("Deck is empty!");
 
       const card = drawResult.data.cards[0];
       setDrawn((prevDrawn) => [
@@ -38,22 +39,26 @@ function Deck() {
       alert(error);
     }
   }
-  function drawBtn () {
-    if(!deck) return null;
+  function drawBtn() {
+    if (!deck) return null;
     return (
-        <button
-            className="draw-btn"
-            onClick={draw}
-            >DRAW CARD</button>
+      <button className="draw-btn" onClick={draw}>
+        DRAW CARD
+      </button>
     );
   }
 
   return (
     <main className="Deck">
-    {drawBtn()}
-    
+      {drawBtn()}
+
+      <div className="drawn-card">
+        {drawn.map((c) => (
+          <Card key={c.id} name={c.name} image={c.image} />
+        ))}
+      </div>
     </main>
-  )
+  );
 }
 
 export default Deck;
